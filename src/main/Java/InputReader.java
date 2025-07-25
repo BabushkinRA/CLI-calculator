@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 
 public class InputReader {
@@ -13,16 +12,21 @@ public class InputReader {
     }
  
     public String readOperation() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("""
-        Введите неодбходимую операцию:
-        + - сложение
-        - - вычетание
-        * - умножение
-        / - деление
+    Scanner sc = new Scanner(System.in);
+    String operation;
+    
+    do {
+        System.out.println("Введите операцию (+, -, *, /): ");
+        operation = sc.nextLine().trim();
         
-        """);
-        String operation = sc.nextLine();
-        return operation;
+        if (!operation.equals("+") && !operation.equals("-") && 
+            !operation.equals("*") && !operation.equals("/")) {
+            System.out.println("Неверная операция! Попробуйте снова.");
+        }
+    } while (!operation.equals("+") && !operation.equals("-") && 
+             !operation.equals("*") && !operation.equals("/"));
+    
+    sc.close();
+    return operation;
     }
 }

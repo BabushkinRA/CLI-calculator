@@ -1,3 +1,5 @@
+import exceptions.ZeroDevException;
+
 public class CalculatorEngine {
     public int sum (int[] nums) {
         return nums[0] + nums[1];
@@ -11,12 +13,13 @@ public class CalculatorEngine {
         return nums[0] * nums[1];
     }
 
-    public int devide (int[] nums) t {
+    public double devide (int[] nums) throws ZeroDevException{
         if (nums[1] != 0) {
-            return nums[0] * nums[1];
+            double answer = nums[0] / nums[1];
+            return answer;
         }
         else {
-            System.out.println("Делить на 0 нельзя");
+            throw new ZeroDevException("Делить на ноль нельзя");
         }
     }
 }

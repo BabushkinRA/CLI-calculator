@@ -1,31 +1,25 @@
-public class Сalculator {
-    public static void main {
-        CalculatorEngine ce = new CalculatorEngine;
-        InputReader ir = new InputReader;
-        ResultOnDisplay rod = new ResultOnDisplay;
+import exceptions.ZeroDevException;
 
-        int[] nums = ir.readNumbers;
-        String operation = ir.readOperation;
-        
-        try {
-            switch (operation) {
-                case '+':
-                    rod.showResult(ce.sum(nums));
-                    break
-                case '-':
-                    rod.showResult(ce.sum(nums));
-                    break
-                case '*':
-                    rod.showResult(ce.sum(nums));
-                    break
-                case '/':
-                    rod.showResult(ce.sum(nums));
-                    break
+public class calculator {
+    public static void main(String[] args) {
+        CalculatorEngine ce = new CalculatorEngine();
+        InputReader ir = new InputReader();
+        ResultOnDisplay rod = new ResultOnDisplay();
+
+        int[] nums = ir.readNumbers();
+        String operation = ir.readOperation();
+        switch (operation) {
+        case "+" -> rod.showResult(ce.sum(nums));
+        case "-" -> rod.showResult(ce.dec(nums));
+        case "*" -> rod.showResult(ce.multiply(nums));
+        case "/" -> {
+            try {
+                rod.showResult(ce.devide(nums));
+            } catch (ZeroDevException e) {
+                System.out.println(e.getMessage());
             }
-        } catch (ZeroDevExeption e) {
-            System.out.println(e.getMessage());
-        } finally {
-            System.out.println("Спасибо за использование нашего калькулятора ;)")
+            }
         }
+
     }
 }
