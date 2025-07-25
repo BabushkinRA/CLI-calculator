@@ -1,6 +1,6 @@
 import exceptions.ZeroDevException;
 
-public class calculator {
+public class Calculator {
     public static void main(String[] args) {
         CalculatorEngine ce = new CalculatorEngine();
         InputReader ir = new InputReader();

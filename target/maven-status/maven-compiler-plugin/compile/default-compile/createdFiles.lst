@@ -1,5 +1,5 @@
+Calculator.class
 exceptions\ZeroDevException.class
 ResultOnDisplay.class
-calculator.class
 InputReader.class
 CalculatorEngine.class
