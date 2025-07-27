@@ -1,4 +1,6 @@
-import exceptions.ZeroDevException;
+package com.example;
+
+import com.example.exceptions.ZeroDevException;
 
 public class CalculatorEngine {
     private double sum (double[] nums) {

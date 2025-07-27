@@ -1,6 +1,8 @@
+package com.example;
+
 import java.util.Scanner;
 
-import exceptions.WrongOperationException;
+import com.example.exceptions.WrongOperationException;
 
 public class InputReader {
 

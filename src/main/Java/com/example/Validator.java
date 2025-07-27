@@ -1,5 +1,6 @@
+package com.example;
 
-import exceptions.WrongOperationException;
+import com.example.exceptions.WrongOperationException;
 
 public class Validator {
 
