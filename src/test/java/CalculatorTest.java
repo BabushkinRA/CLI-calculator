@@ -8,12 +8,12 @@ public class CalculatorTest {
     @Test
     void testDevide() {
         CalculatorEngine calc = new CalculatorEngine();
-        assertEquals(2.0, calc.solve(new double[]{4.0, 2.0}, "/"));
+        assertEquals(2.0, CalculatorEngine.solve(new double[]{4.0, 2.0}, "/"));
     }
 
     @Test
     void testSum() {
         CalculatorEngine calc = new CalculatorEngine();
-        assertEquals(225, calc.solve(new double[]{223, 2.0}, "+"));
+        assertEquals(225, CalculatorEngine.solve(new double[]{223, 2.0}, "+"));
     }
 }
