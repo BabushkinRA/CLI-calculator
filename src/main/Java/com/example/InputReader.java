@@ -11,15 +11,24 @@ public class InputReader {
         Scanner sc = new Scanner(System.in);
         String ln1 = "";
         String ln2 = "";
-        do {
+        Boolean validInput = false;
+
+        while (!validInput) { 
             System.out.println("Введите первое число: ");
             ln1 = sc.nextLine();
             System.out.println("Введите второе число: ");
             ln2 = sc.nextLine();
-            nums[0] = Double.parseDouble(ln1);
-            nums[1] = Double.parseDouble(ln2);
-        } while (!(Validator.isDouble(ln1) && Validator.isDouble(ln2)));
 
+            if (Validator.isDouble(ln1) && Validator.isDouble(ln2)) {
+                nums[0] = Double.parseDouble(ln1);
+                nums[1] = Double.parseDouble(ln2);
+                validInput = true;
+            } else {
+                System.out.println("Числа заданны не верно, попробуйте снова");
+            }
+            
+        }
+        
         return nums; 
     }
  
