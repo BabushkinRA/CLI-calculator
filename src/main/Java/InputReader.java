@@ -1,34 +1,40 @@
 import java.util.Scanner;
 
-public class InputReader {
-    public  int[] readNumbers() {
-        int[] nums = new int[2];
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Введите первое число: ");
-        nums[0] = sc.nextInt();
+import exceptions.WrongOperationException;
 
-        System.out.println("Введите второе число: ");
-        nums[1] = sc.nextInt();
-        sc.close();
+public class InputReader {
+
+    public  double[] readNumbers() {
+        double[] nums = new double[2];
+        Scanner sc = new Scanner(System.in);
+        String ln1 = "";
+        String ln2 = "";
+        do {
+            System.out.println("Введите первое число: ");
+            ln1 = sc.nextLine();
+            System.out.println("Введите второе число: ");
+            ln2 = sc.nextLine();
+            nums[0] = Double.parseDouble(ln1);
+            nums[1] = Double.parseDouble(ln2);
+        } while (!(Validator.isDouble(ln1) && Validator.isDouble(ln2)));
+
         return nums; 
     }
  
     public String readOperation() {
-    Scanner sc = new Scanner(System.in);
-    String operation;
-    
-    do {
-        System.out.println("Введите операцию (+, -, *, /): ");
-        operation = sc.nextLine().trim();
-        
-        if (!operation.equals("+") && !operation.equals("-") && 
-            !operation.equals("*") && !operation.equals("/")) {
-            System.out.println("Неверная операция! Попробуйте снова.");
+        Scanner sc = new Scanner(System.in);
+        Validator v = new Validator();
+
+        while (true) {
+            System.out.println("Введите операцию (+, -, *, /): ");
+            String operation = sc.nextLine();
+
+            try {
+                v.validateOperation(operation);
+                return operation;
+            } catch (WrongOperationException e) {
+                System.out.println(e.getMessage());
+            }
         }
-    } while (!operation.equals("+") && !operation.equals("-") && 
-             !operation.equals("*") && !operation.equals("/"));
-    
-    sc.close();
-    return operation;
     }
 }
