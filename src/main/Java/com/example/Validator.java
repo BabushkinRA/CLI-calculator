@@ -4,9 +4,10 @@ import com.example.exceptions.WrongOperationException;
 
 public class Validator {
 
-    public void validateOperation(String operation) throws WrongOperationException {
+    public static void validateOperation(String operation) throws WrongOperationException {
         if (!operation.equals("+") && !operation.equals("-")
-            && !operation.equals("*") && !operation.equals("/")) {
+            && !operation.equals("*") && !operation.equals("/")
+            && !operation.equals("^")) {
             throw new WrongOperationException("Неверная операция, введите заново");
         }
     }

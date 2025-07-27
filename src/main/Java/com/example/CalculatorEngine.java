@@ -3,19 +3,19 @@ package com.example;
 import com.example.exceptions.ZeroDevException;
 
 public class CalculatorEngine {
-    private double sum (double[] nums) {
+    private static double sum (double[] nums) {
         return nums[0] + nums[1];
     }
 
-    private double dec (double[] nums) {
+    private static double dec (double[] nums) {
         return nums[0] - nums[1];
     }
 
-    private double multiply (double[] nums) {
+    private static double multiply (double[] nums) {
         return nums[0] * nums[1];
     }
 
-    private double devide (double[] nums) throws ZeroDevException{
+    private static double devide (double[] nums) throws ZeroDevException{
         if (nums[1] != 0) {
             double answer = nums[0] / nums[1];
             return answer;
@@ -25,20 +25,25 @@ public class CalculatorEngine {
         }
     }
 
-    public double solve (double[] nums, String operation) {
+    private static double exponentiation (double[] nums) {
+        return Math.pow(nums[0], nums[1]);
+    }
+
+    public static double solve (double[] nums, String operation) {
         double answer = 0;
 
         switch (operation) {
-        case "+" -> answer = this.sum(nums);
-        case "-" -> answer = this.dec(nums);
-        case "*" -> answer = this.multiply(nums);
+        case "+" -> answer = sum(nums);
+        case "-" -> answer = dec(nums);
+        case "*" -> answer = multiply(nums);
         case "/" -> {
             try {
-                answer = this.devide(nums);
+                answer = devide(nums);
             } catch (ZeroDevException e) {
                 System.out.println(e.getMessage());
             }
             }
+        case "^" -> answer = exponentiation(nums);
         }
 
         return answer;

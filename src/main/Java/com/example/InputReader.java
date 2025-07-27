@@ -34,14 +34,13 @@ public class InputReader {
  
     public String readOperation() {
         Scanner sc = new Scanner(System.in);
-        Validator v = new Validator();
 
         while (true) {
-            System.out.println("Введите операцию (+, -, *, /): ");
+            System.out.println("Введите операцию (+, -, *, /, ^): ");
             String operation = sc.nextLine();
 
             try {
-                v.validateOperation(operation);
+                Validator.validateOperation(operation);
                 return operation;
             } catch (WrongOperationException e) {
                 System.out.println(e.getMessage());
